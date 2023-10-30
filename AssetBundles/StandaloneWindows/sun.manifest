@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+CRC: 2729857687
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6b5f912352b1593b3e12b408ee10ae9b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1431a5e1fbeed79049ab8c4ad46241cc
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 6c4779900b2c08f4eabd8a0d16777d1c, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 135
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/GameResources/Sun.prefab
+Dependencies: []

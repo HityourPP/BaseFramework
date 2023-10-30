@@ -1,0 +1,8 @@
+XLuaProject.AssetBundlesManager
+XLuaProject.ABTest
+XLuaProject.HotfixTest
+XLuaProject.Revolution
+XLuaProject.Rotation
+XLuaProject.AssetBundlesManager+<RealLoadResourceAsync>d__11
+XLuaProject.AssetBundlesManager+<RealLoadResourceAsync>d__13
+XLuaProject.AssetBundlesManager+<RealLoadResourceAsync>d__15`1

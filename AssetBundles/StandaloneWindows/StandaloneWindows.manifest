@@ -1,0 +1,10 @@
+ManifestFileVersion: 0
+CRC: 4215814352
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: sun
+      Dependencies: {}
+    Info_1:
+      Name: earth
+      Dependencies: {}
