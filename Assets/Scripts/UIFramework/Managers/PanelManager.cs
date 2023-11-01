@@ -18,7 +18,8 @@ public class PanelManager
         panelStack.Push(nextPanel);
         GameObject spawnUI = uiManager.GetSingleUI(nextPanel.UIType);
         nextPanel.Initialize(this);
-        nextPanel.Initialize(new UIManager(spawnUI));
+        uiManager.activePanel = spawnUI;
+        nextPanel.Initialize(uiManager);
         nextPanel.OnEnter();
     }
 
@@ -26,7 +27,8 @@ public class PanelManager
     {
         if (panelStack.Count > 0)
         {
-            panelStack.Pop().OnExit();
+            panelStack.Peek().OnExit();
+            panelStack.Pop();
         }
 
         if (panelStack.Count > 0)

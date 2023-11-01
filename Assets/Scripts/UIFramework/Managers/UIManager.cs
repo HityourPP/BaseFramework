@@ -4,12 +4,12 @@ using UnityEngine;
 public class UIManager
 {
     public GameObject activePanel;
-
+    private readonly Dictionary<UIType, GameObject> uiDic;
     public UIManager(GameObject panel)
     {
         activePanel = panel;
+        uiDic = new Dictionary<UIType, GameObject>();
     }
-    private Dictionary<UIType, GameObject> uiDic = new Dictionary<UIType, GameObject>();
     /// <summary>
     /// 获取UI
     /// </summary>
@@ -39,10 +39,11 @@ public class UIManager
     /// <summary>
     /// 销毁UI
     /// </summary>
-    public void DestroySingleUI(UIType uiType)
+    public void DestroyUI(UIType uiType)
     {
-        if (uiDic.ContainsKey(uiType))
+        if (uiDic.TryGetValue(uiType,out GameObject ui))
         {
+            Debug.Log("销毁" + uiType.ResName);
             GameObject.Destroy(uiDic[uiType]);
             uiDic.Remove(uiType);
         }

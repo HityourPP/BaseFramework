@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 57195053
+CRC: 1507062237
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: fea7792e6144723040e8e92f53f7be80
+    Hash: b1d876e81f5e7d5c3c979c57afe07e35
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 8772d23b3a8edf5953f43cf17724e8ce
+    Hash: 4cc3217dfa47fa278311982067cf8bbd
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -20,13 +20,13 @@ ClassTypes:
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 408877e0885ec6c499eeb2a8700d7d2a, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 408877e0885ec6c499eeb2a8700d7d2a, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 128
@@ -81,5 +81,7 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.SpriteState
 Assets:
+- Assets/GameResources/UI/SettingPanel.prefab
 - Assets/GameResources/UI/StartPanel.prefab
+- Assets/GameResources/UI/CharacterSelectPanel.prefab
 Dependencies: []

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class BasePanel
 {
     public UIType UIType { get; private set; }
@@ -21,5 +23,9 @@ public class BasePanel
     public virtual void OnEnter(){}
     public virtual void OnPause(){}
     public virtual void OnResume(){}
-    public virtual void OnExit(){}
+
+    public virtual void OnExit()
+    {
+        uiManager.DestroyUI(UIType);
+    }
 }
