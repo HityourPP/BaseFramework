@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PanelManager 
 {
-    private Stack<BasePanel> panelStack = new Stack<BasePanel>();
+    public Stack<BasePanel> panelStack = new Stack<BasePanel>();
     private UIManager uiManager = new UIManager(null);
     private BasePanel panel;
 

@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class BasePanel
+public abstract class BasePanel
 {
     public UIType UIType { get; private set; }
 

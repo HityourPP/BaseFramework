@@ -33,7 +33,7 @@ public class UIManager
             .LoadResource<GameObject>(uiType.AbName, uiType.ResName), canvas.transform);
         singleUI.name = uiType.ResName;
         uiDic.Add(uiType, singleUI);
-        Debug.Log(singleUI.name);
+        // Debug.Log(singleUI.name);
         return singleUI;
     }
     /// <summary>

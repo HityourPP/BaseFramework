@@ -3,19 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonAutoMono<GameManager>
 {
-    public static GameManager Instance { get; private set; }
-
-    private PanelManager panelManager;
+    public SceneSystem SceneSystem { get; private set; }
     private void Awake()
     {
-        Instance = this;
-        panelManager = new PanelManager();
+        SceneSystem = transform.gameObject.AddComponent<SceneSystem>();
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
-        panelManager.PushUI(new StartPanel());
+        SceneSystem.SetSceneState(new MainMenuScene());
     }
 }

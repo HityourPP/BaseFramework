@@ -21,6 +21,7 @@ public class StartPanel : BasePanel
         uiManager.GetOrAddComponentInChildren<Button>("PlayButton").onClick.AddListener(() =>
         {
             Debug.Log("Play");
+            GameManager.GetInstance().SceneSystem.SetSceneState(new CharacterSelelctScene());
         });    
         uiManager.GetOrAddComponentInChildren<Button>("SettingButton").onClick.AddListener(() =>
         {

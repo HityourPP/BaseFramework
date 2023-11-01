@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterSelectPanel : BasePanel
 {
@@ -11,7 +12,11 @@ public class CharacterSelectPanel : BasePanel
 
     public override void OnEnter()
     {
-        
+        uiManager.GetOrAddComponentInChildren<Button>("MainMenuButton").onClick.AddListener((() =>
+        {
+            GameManager.GetInstance().SceneSystem.SetSceneState(new MainMenuScene());
+        }));
+            
     }
     
 }
