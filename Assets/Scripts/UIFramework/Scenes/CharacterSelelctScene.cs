@@ -18,7 +18,6 @@ public class CharacterSelelctScene : BaseScene
         {
             panelManager.PushUI(new CharacterSelectPanel());
         }
-        Debug.LogError(panelManager.panelStack.Count);
     }
 
     private void SceneManagerOnLoaded(Scene arg0, LoadSceneMode arg1)

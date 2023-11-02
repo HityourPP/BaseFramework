@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1507062237
+CRC: 1612281561
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: b1d876e81f5e7d5c3c979c57afe07e35
+    Hash: 366917f5fd0ae53dd75209537e3585a6
   TypeTreeHash:
     serializedVersion: 2
     Hash: 4cc3217dfa47fa278311982067cf8bbd
@@ -81,7 +81,10 @@ SerializeReferenceClassIdentifiers:
 - AssemblyName: UnityEngine.UI
   ClassName: UnityEngine.UI.SpriteState
 Assets:
-- Assets/GameResources/UI/SettingPanel.prefab
+- Assets/GameResources/UI/IslandGUI/SettingPanel.prefab
+- Assets/GameResources/UI/IslandGUI/MainPanel.prefab
+- Assets/GameResources/UI/IslandGUI/GamePanel.prefab
 - Assets/GameResources/UI/StartPanel.prefab
+- Assets/GameResources/UI/LoadingPanel.prefab
 - Assets/GameResources/UI/CharacterSelectPanel.prefab
 Dependencies: []

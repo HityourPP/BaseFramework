@@ -17,10 +17,14 @@ public class SettingPanel : BasePanel
             Debug.Log("Resume");
             panelManager.PopUI();
         }));        
-        uiManager.GetOrAddComponentInChildren<Button>("QuitButton").onClick.AddListener((() =>
+        uiManager.GetOrAddComponentInChildren<Button>("RestartButton").onClick.AddListener((() =>
         {
-            Debug.Log("Quit");
-            Application.Quit();
+            Debug.Log("Restart");
+        }));       
+        uiManager.GetOrAddComponentInChildren<Button>("MainMenuButton").onClick.AddListener((() =>
+        {
+            Debug.Log("MainMenu");
+            GameManager.GetInstance().SceneSystem.SetSceneState(new MainMenuScene());
         }));
     }
 }

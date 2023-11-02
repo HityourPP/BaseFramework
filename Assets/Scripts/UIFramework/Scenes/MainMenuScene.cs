@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class MainMenuScene : BaseScene
 {
     private PanelManager panelManager;
-    private static string sceneName = "MainMenuScene";
     public override void OnEnter()
     {
         panelManager = new PanelManager();
@@ -18,17 +17,15 @@ public class MainMenuScene : BaseScene
         }
         else
         {
-            panelManager.PushUI(new StartPanel());
+            panelManager.PushUI(new MainPanel());
         }
-
-        Debug.LogError(panelManager.panelStack.Count);
     }
 
     private void SceneManagerOnSceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
         if (arg0.name == Loader.Scene.MainMenuScene.ToString())
         {
-            panelManager.PushUI(new StartPanel());
+            panelManager.PushUI(new MainPanel());
         }
     }
 
