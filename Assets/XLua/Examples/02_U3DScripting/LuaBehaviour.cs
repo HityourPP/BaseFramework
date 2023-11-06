@@ -24,17 +24,17 @@ namespace XLuaTest
     [LuaCallCSharp]
     public class LuaBehaviour : MonoBehaviour
     {
-        public TextAsset luaScript;
-        public Injection[] injections;
+        public TextAsset luaScript;             //lua脚本文件
+        public Injection[] injections;          //需要注入到环境变量的物体
 
-        internal static LuaEnv luaEnv = new LuaEnv(); //all lua behaviour shared one luaenv only!
-        internal static float lastGCTime = 0;
-        internal const float GCInterval = 1;//1 second 
+        private static LuaEnv luaEnv = new LuaEnv();    //all lua behaviour shared one luaenv only!
+        private static float lastGCTime = 0;
+        private const float GCInterval = 1;             //1 second 
 
         private Action luaStart;
         private Action luaUpdate;
         private Action luaOnDestroy;
-
+        //脚本环境，也就是每一个挂靠在游戏对象上的脚本组件，即脚本对象，都有一个独立的脚本环境，但总体都是由类的一个luaEnv new出来的
         private LuaTable scriptEnv;
 
         void Awake()
@@ -46,27 +46,30 @@ namespace XLuaTest
             meta.Set("__index", luaEnv.Global);
             scriptEnv.SetMetaTable(meta);
             meta.Dispose();
-
+            
+            //配置环境变量
+            //将lua脚本的self设为当前脚本指针，这样就能通过该指针获取游戏对象的组件    
             scriptEnv.Set("self", this);
+            //将外部unity组件传入的环境变量的lua表中
             foreach (var injection in injections)
             {
                 scriptEnv.Set(injection.name, injection.value);
             }
-
+            
+            //运行lua代码，其中三个参数分别为：1，lua代码块，2，lua代码块名字，用于报错时debug显示信息，3，代码块的环境变量
             luaEnv.DoString(luaScript.text, "LuaTestScript", scriptEnv);
 
-            Action luaAwake = scriptEnv.Get<Action>("awake");
-            scriptEnv.Get("start", out luaStart);
-            scriptEnv.Get("update", out luaUpdate);
-            scriptEnv.Get("ondestroy", out luaOnDestroy);
-
+            Action luaAwake = scriptEnv.Get<Action>("Awake");
+            
+            //获取lua代码中的函数
+            scriptEnv.Get("Start", out luaStart);
+            scriptEnv.Get("Update", out luaUpdate);
+            scriptEnv.Get("OnDestroy", out luaOnDestroy);
             if (luaAwake != null)
             {
                 luaAwake();
             }
         }
-
-        // Use this for initialization
         void Start()
         {
             if (luaStart != null)
@@ -74,27 +77,26 @@ namespace XLuaTest
                 luaStart();
             }
         }
-
-        // Update is called once per frame
         void Update()
         {
             if (luaUpdate != null)
             {
                 luaUpdate();
             }
-            if (Time.time - LuaBehaviour.lastGCTime > GCInterval)
+            //定时调用，清除未手动释放的luaBase对象，如luaTable,luaFunction等
+            if (Time.time - lastGCTime > GCInterval)
             {
                 luaEnv.Tick();
-                LuaBehaviour.lastGCTime = Time.time;
+                lastGCTime = Time.time;
             }
         }
-
         void OnDestroy()
         {
             if (luaOnDestroy != null)
             {
                 luaOnDestroy();
             }
+            //释放脚本环境
             luaOnDestroy = null;
             luaUpdate = null;
             luaStart = null;

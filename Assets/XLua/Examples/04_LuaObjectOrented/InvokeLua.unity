@@ -229,3 +229,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e190b5ef59b7a84dbb262cfd11f9107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  luaScript: {fileID: 4900000, guid: 9de588d8269de0347aee2bdb33529185, type: 3}

@@ -12,6 +12,7 @@ using XLua;
 
 namespace XLuaTest
 {
+    //用于事件中传递数据
     public class PropertyChangedEventArgs : EventArgs
     {
         public string name;
@@ -23,81 +24,31 @@ namespace XLuaTest
         [CSharpCallLua]
         public interface ICalc
         {
-            event EventHandler<PropertyChangedEventArgs> PropertyChanged;
-
+            //定义包含数据的委托
+            public event EventHandler<PropertyChangedEventArgs> PropertyChanged;
             int Add(int a, int b);
             int Mult { get; set; }
-
             object this[int index] { get; set; }
         }
-
         [CSharpCallLua]
         public delegate ICalc CalcNew(int mult, params string[] args);
-
-        private string script = @"
-                local calc_mt = {
-                    __index = {
-                        Add = function(self, a, b)
-                            return (a + b) * self.Mult
-                        end,
-                        
-                        get_Item = function(self, index)
-                            return self.list[index + 1]
-                        end,
-
-                        set_Item = function(self, index, value)
-                            self.list[index + 1] = value
-                            self:notify({name = index, value = value})
-                        end,
-                        
-                        add_PropertyChanged = function(self, delegate)
-	                        if self.notifylist == nil then
-		                        self.notifylist = {}
-	                        end
-	                        table.insert(self.notifylist, delegate)
-                            print('add',delegate)
-                        end,
-                                                
-                        remove_PropertyChanged = function(self, delegate)
-                            for i=1, #self.notifylist do
-		                        if CS.System.Object.Equals(self.notifylist[i], delegate) then
-			                        table.remove(self.notifylist, i)
-			                        break
-		                        end
-	                        end
-                            print('remove', delegate)
-                        end,
-
-                        notify = function(self, evt)
-	                        if self.notifylist ~= nil then
-		                        for i=1, #self.notifylist do
-			                        self.notifylist[i](self, evt)
-		                        end
-	                        end	
-                        end,
-                    }
-                }
-
-                Calc = {
-	                New = function (mult, ...)
-                        print(...)
-                        return setmetatable({Mult = mult, list = {'aaaa','bbbb','cccc'}}, calc_mt)
-                    end
-                }
-	        ";
+        public TextAsset luaScript; 
         // Use this for initialization
         void Start()
         {
-            LuaEnv luaenv = new LuaEnv();
-            Test(luaenv);//调用了带可变参数的delegate，函数结束都不会释放delegate，即使置空并调用GC
-            luaenv.Dispose();
+            LuaEnv luaEnv = new LuaEnv();
+            Test(luaEnv);//调用了带可变参数的delegate，函数结束都不会释放delegate，即使置空并调用GC
+            luaEnv.Dispose();
         }
 
         void Test(LuaEnv luaenv)
         {
-            luaenv.DoString(script);
-            CalcNew calc_new = luaenv.Global.GetInPath<CalcNew>("Calc.New");
-            ICalc calc = calc_new(10, "hi", "john"); //constructor
+            //执行lua脚本
+            luaenv.DoString(luaScript.text);
+            //返回脚本中的Calc.New
+            CalcNew calcNew = luaenv.Global.GetInPath<CalcNew>("Calc.New");
+            //将lua中的表转化为C#中的接口
+            ICalc calc = calcNew(10, "hi", "john"); //constructor
             Debug.Log("sum(*10) =" + calc.Add(1, 2));
             calc.Mult = 100;
             Debug.Log("sum(*100)=" + calc.Add(1, 2));
@@ -118,12 +69,6 @@ namespace XLuaTest
         void Notify(object sender, PropertyChangedEventArgs e)
         {
             Debug.Log(string.Format("{0} has property changed {1}={2}", sender, e.name, e.value));
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }

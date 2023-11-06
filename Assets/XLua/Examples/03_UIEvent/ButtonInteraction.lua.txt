@@ -4,9 +4,12 @@
 -- http://opensource.org/licenses/MIT
 -- Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
-function start()
+function Start()
 	print("lua start...")
-
+    --由于self设置为C#代码的this，所以可以访问C#所在游戏对象的组件
+    --注意lua中的:与.的使用，一般在调用类的方法时用:,调用属性时用.
+    --1、 定义的时候： Class:test()与Class.test(self)是等价的，点号(.)要达到冒号(:)的效果要加一个self参数到第一个参数； 
+    --2、 调用的时候： object:test()与object.test(object)等价，点号(.)要添加对象自身到第一个参数。 
 	self:GetComponent("Button").onClick:AddListener(function()
 		print("clicked, you input is '" ..input:GetComponent("InputField").text .."'")
 	end)
