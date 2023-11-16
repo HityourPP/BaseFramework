@@ -10,7 +10,8 @@ public class LuaManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        LuaEnvInit();
+        // LuaEnvInit();
+        RunLuaScript("lua", "Hello.lua");
     }
 
     /// <summary>
@@ -21,15 +22,22 @@ public class LuaManager : MonoBehaviour
         LuaEnv = new LuaEnv();
         LuaEnv.AddLoader(Loader);
         //加载lua文件
-        LuaEnv.DoString(@"require 'Hello'");
+        LuaEnv.DoString(@"require 'Hello'");   
     }
     /// <summary>
     /// 自定义Loader
     /// </summary>
     private byte[] Loader(ref string fileName)
     {
-        string absPath = Application.dataPath + "/Resources/Lua/" + fileName + ".lua";
+        string absPath = Application.dataPath + "/Resources/Lua/" + fileName + ".lua.txt";
         return System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(absPath));
+    }
+
+    public void RunLuaScript(string abName, string resName,LuaTable luaTable = null)
+    {
+        LuaEnv = new LuaEnv();
+        LuaEnv.DoString(AssetBundlesManager.GetInstance().LoadResource<TextAsset>(abName, resName).text, resName,
+            luaTable);
     }
 }
 
