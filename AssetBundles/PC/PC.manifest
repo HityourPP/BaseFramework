@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 4017550465
+CRC: 707584744
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -10,4 +10,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_2:
       Name: lua
+      Dependencies: {}
+    Info_3:
+      Name: planefight
       Dependencies: {}

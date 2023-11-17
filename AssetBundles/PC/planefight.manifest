@@ -1,0 +1,37 @@
+ManifestFileVersion: 0
+CRC: 560822715
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 1e407736576e4ac14df9e70d243a7916
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: be26720fd712811940428435c7d40d28
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 50
+  Script: {instanceID: 0}
+- Class: 70
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1690f2ca34df47e40964063faf89f19d, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/GameResources/PlaneFight/Bullet.prefab
+Dependencies: []
