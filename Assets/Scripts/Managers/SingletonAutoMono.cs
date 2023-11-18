@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 创建单例脚本
+/// </summary>
 public class SingletonAutoMono<T> : MonoBehaviour where T: MonoBehaviour
 {
     private static T Instance;

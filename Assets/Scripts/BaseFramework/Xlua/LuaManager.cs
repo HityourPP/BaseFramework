@@ -1,7 +1,9 @@
 using System.IO;
 using UnityEngine;
 using XLua;
-
+/// <summary>
+/// 用于加载运行lua脚本
+/// </summary>
 public class LuaManager : MonoBehaviour
 {
     public static LuaManager Instance { get; private set; }

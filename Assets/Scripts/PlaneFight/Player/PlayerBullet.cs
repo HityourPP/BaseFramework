@@ -14,10 +14,21 @@ public class PlayerBullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    private void FixedUpdate()
     {
-        rb.velocity = transform.up * speed;
-        Destroy(gameObject, lifeTime);
+        transform.position += transform.up * Time.fixedDeltaTime * speed;
+    }
+
+    private void OnEnable()
+    {
+        // rb.velocity = transform.up * speed;
+        Invoke(nameof(DestroySelf), lifeTime);
+        // Destroy(gameObject, lifeTime);
+    }
+
+    private void DestroySelf()
+    {
+        PoolManager.GetInstance().AddGameObject(gameObject.name, gameObject);
     }
 
     private void OnCollisionEnter(Collision other)

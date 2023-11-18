@@ -54,7 +54,11 @@ namespace PlaneFight
             {
                 if (Input.GetMouseButton(0))
                 {
-                    Instantiate(playerBullet, shootPos.position, transform.rotation);
+                    GameObject bullet = PoolManager.GetInstance().GetGameObject("planefight", "Bullet");
+                    bullet.transform.Rotate(0, 0, 0);
+                    bullet.transform.rotation = transform.rotation;
+                    bullet.transform.position = shootPos.position;
+                    // Instantiate(playerBullet, shootPos.position, transform.rotation);
                     shootStartTime = Time.time;
                 }
             }

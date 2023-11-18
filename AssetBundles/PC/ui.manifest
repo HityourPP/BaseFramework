@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1160420059
+CRC: 3658836967
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d1cafed7d80b6189c749a85af1e6377e
+    Hash: 174c8df5df0c9c5f2fc6a63af3d0ad47
   TypeTreeHash:
     serializedVersion: 2
-    Hash: cbf51325a6d59997d4a1b386b170debb
+    Hash: d5eaffc34094109b07f63d493bf162b8
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -21,8 +21,6 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-- Class: 114
-  Script: {fileID: 11500000, guid: 408877e0885ec6c499eeb2a8700d7d2a, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
 - Class: 114
@@ -84,7 +82,5 @@ Assets:
 - Assets/GameResources/UI/IslandGUI/SettingPanel.prefab
 - Assets/GameResources/UI/IslandGUI/MainPanel.prefab
 - Assets/GameResources/UI/IslandGUI/GamePanel.prefab
-- Assets/GameResources/UI/StartPanel.prefab
 - Assets/GameResources/UI/LoadingPanel.prefab
-- Assets/GameResources/UI/CharacterSelectPanel.prefab
 Dependencies: []

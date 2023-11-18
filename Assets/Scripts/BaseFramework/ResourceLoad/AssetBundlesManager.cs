@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+/// <summary>
+/// 用于ab包资源的加载与卸载
+/// </summary>
 public class AssetBundlesManager : SingletonAutoMono<AssetBundlesManager>
 {
     private AssetBundle abMain = null;
