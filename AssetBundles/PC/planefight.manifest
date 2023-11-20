@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 595498699
+CRC: 2568621699
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e57c432a973540061d5f7877cf7699f9
+    Hash: 2e46bb5a484cfdf75f470bef3d8138a0
   TypeTreeHash:
     serializedVersion: 2
-    Hash: be26720fd712811940428435c7d40d28
+    Hash: 53f0ba2574cdad949d298aa60fdf3243
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -27,11 +27,17 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 1690f2ca34df47e40964063faf89f19d, type: 3}
 - Class: 115
   Script: {instanceID: 0}
+- Class: 198
+  Script: {instanceID: 0}
+- Class: 199
+  Script: {instanceID: 0}
 - Class: 212
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/GameResources/PlaneFight/ExplosionEffect.prefab
+- Assets/Resources/Material/Background.mat
 - Assets/GameResources/PlaneFight/Bullet.prefab
 Dependencies: []
