@@ -7,7 +7,9 @@ namespace PlaneFight
 {
     public class Enemy : MonoBehaviour
     {
-        private float lifeTime = 10f;
+        [SerializeField] private float lifeTime = 10f;
+        [SerializeField] private float maxHealth;
+        private float currentHealth;
         private GameObject explosionEffect;
         private Rigidbody2D rb;
 
@@ -18,7 +20,8 @@ namespace PlaneFight
 
         private void OnEnable()
         {
-            rb.velocity = -transform.up;
+            currentHealth = maxHealth;
+            rb.velocity = -transform.up * 10 / rb.mass;
             Invoke(nameof(DestroySelf), lifeTime);
         }
 
@@ -30,11 +33,15 @@ namespace PlaneFight
         {
             if (other.gameObject.CompareTag("Bullet"))
             {
-                explosionEffect = PoolManager.GetInstance().GetGameObject("planefight", "ExplosionEffect");
-                explosionEffect.transform.position = transform.position;
-                explosionEffect.GetComponent<ParticleSystem>().Play();
-                CancelInvoke(nameof(DestroySelf));
-                DestroySelf();
+                currentHealth -= 1;
+                if (currentHealth <= 0)
+                {
+                    explosionEffect = PoolManager.GetInstance().GetGameObject("planefight", "ExplosionEffect");
+                    explosionEffect.transform.position = transform.position;
+                    explosionEffect.GetComponent<ParticleSystem>().Play();
+                    CancelInvoke(nameof(DestroySelf));
+                    DestroySelf();  
+                }
             }
         }
     }
