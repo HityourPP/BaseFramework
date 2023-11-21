@@ -28,7 +28,7 @@ namespace PlaneFight
         private void OnEnable()
         {
             spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
-            currentHealth = size * 2;
+            currentHealth = size;
             transform.localScale = Vector3.one * size;
             rb.mass = size;         //让质量与大小匹配
         }
@@ -36,15 +36,37 @@ namespace PlaneFight
         /// 向对应移动方向施加力，质量越大，速度越小
         /// </summary>
         /// <param name="direction"></param>
-        private void SetTrajectory(Vector2 direction)
+        public void SetTrajectory(Vector2 direction)
         {
             rb.AddForce(direction * speed);
-            Invoke(nameof(DestroySelf), 30f);
+            Invoke(nameof(DestroySelf), 60f);
+        }
+
+        public void InitValue()
+        {
+            currentHealth = size;
+            transform.localScale = Vector3.one * size;
+            rb.mass = size;  
         }
 
         private void DestroySelf()
         {
             PoolManager.GetInstance().AddGameObject(gameObject.name, gameObject);
+        }
+
+        private void CreateSplitMeteor()
+        {
+            Vector2 position = transform.position;
+            //Random.insideUnitCircle获取圆形，半径为1，内的随机点
+            position += Random.insideUnitCircle;
+            Meteor half =
+                PoolManager.GetInstance().GetGameObject("planefight", gameObject.name).GetComponent<Meteor>();
+            half.size = size * 0.6f;
+            half.gameObject.transform.position = position;
+            half.spriteRenderer.sprite = spriteRenderer.sprite;
+            half.InitValue();
+            //随机选择一个方向 
+            half.SetTrajectory(Random.insideUnitCircle.normalized * Mathf.Max(3.5f, 3.5f / size));
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -58,6 +80,11 @@ namespace PlaneFight
                     explosionEffect.transform.position = transform.position;
                     explosionEffect.GetComponent<ParticleSystem>().Play();
                     CancelInvoke(nameof(DestroySelf));
+                    if (size * 0.5f > minSize)
+                    {
+                        CreateSplitMeteor();
+                        CreateSplitMeteor();
+                    }
                     DestroySelf();
                 }
             }

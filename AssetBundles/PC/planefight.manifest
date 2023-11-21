@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 142823138
+CRC: 186769003
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0e045d561881d70b82c9442bd2d6d9c1
+    Hash: ada3cc8668927e7e5d4ef368211e02d9
   TypeTreeHash:
     serializedVersion: 2
-    Hash: f8d69d4835fc8d15b36164efbb982f11
+    Hash: 10c0b9ade6e24b0d7b5cc420be86be52
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -21,12 +21,18 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 50
   Script: {instanceID: 0}
+- Class: 60
+  Script: {instanceID: 0}
 - Class: 70
   Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: d88c687b9d8baa643b89285c5fc30acd, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 1690f2ca34df47e40964063faf89f19d, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 91cb4cf9f6c21ef49bf583120f783dc4, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 56af1d2c89009fb419ce21d28ce20a39, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 198
@@ -39,7 +45,15 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
+- Assets/GameResources/PlaneFight/Entity/Bullet.prefab
+- Assets/GameResources/PlaneFight/Enemy/Meteor/Meteor_Big1.prefab
+- Assets/GameResources/PlaneFight/Enemy/Meteor/Meteor_Big4.prefab
+- Assets/GameResources/PlaneFight/Enemy/Meteor/Meteor_Big2.prefab
 - Assets/GameResources/PlaneFight/Effect/ExplosionEffect.prefab
 - Assets/Resources/Material/Background.mat
-- Assets/GameResources/PlaneFight/Entity/Bullet.prefab
+- Assets/GameResources/PlaneFight/Enemy/EnemyPlane/EnemyBlack4.prefab
+- Assets/GameResources/PlaneFight/Enemy/EnemyPlane/EnemyBlack3.prefab
+- Assets/GameResources/PlaneFight/Enemy/EnemyPlane/EnemyBlack1.prefab
+- Assets/GameResources/PlaneFight/Enemy/Meteor/Meteor_Big3.prefab
+- Assets/GameResources/PlaneFight/Enemy/EnemyPlane/EnemyBlack2.prefab
 Dependencies: []
