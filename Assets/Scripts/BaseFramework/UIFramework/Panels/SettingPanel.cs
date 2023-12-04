@@ -26,5 +26,12 @@ public class SettingPanel : BasePanel
             Debug.Log("MainMenu");
             GameManager.GetInstance().SceneSystem.SetSceneState(new MainMenuScene());
         }));
+        Time.timeScale = 0f;
+    }
+
+    public override void OnExit()
+    {
+        base.OnExit();
+        Time.timeScale = 1f;
     }
 }

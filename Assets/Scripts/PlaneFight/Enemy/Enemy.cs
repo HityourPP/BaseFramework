@@ -43,6 +43,14 @@ namespace PlaneFight
                     DestroySelf();  
                 }
             }
+            else  if (other.gameObject.CompareTag("Meteor"))
+            {
+                explosionEffect = PoolManager.GetInstance().GetGameObject("planefight", "ExplosionEffect");
+                explosionEffect.transform.position = transform.position;
+                explosionEffect.GetComponent<ParticleSystem>().Play();
+                CancelInvoke(nameof(DestroySelf));
+                DestroySelf();  
+            }
         }
     }
 }

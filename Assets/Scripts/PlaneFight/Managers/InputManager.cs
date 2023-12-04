@@ -5,17 +5,11 @@ using UnityEngine;
 
 namespace PlaneFight
 {
-    public class InputManager : MonoBehaviour
+    public class InputManager : SingletonAutoMono<InputManager>
     {
-        public static InputManager Instance { get; private set; }
         private PlayerInputAction playerInputAction;
         private void Awake()
         {
-            if (Instance != null)
-            {
-                Destroy(gameObject);
-            }
-            Instance = this;
             playerInputAction = new PlayerInputAction();
             playerInputAction.Enable();
         }

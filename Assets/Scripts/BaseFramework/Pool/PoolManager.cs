@@ -13,13 +13,11 @@ public class PoolManager : SingletonAutoMono<PoolManager>
         {
             return poolDic[resName].GetGameObject();
         }
-        else
-        {
-            GameObject gameObject =
-                Instantiate(AssetBundlesManager.GetInstance().LoadResource<GameObject>(abName, resName));
-            gameObject.name = resName;
-            return gameObject;
-        }
+        GameObject gameObject =
+            Instantiate(AssetBundlesManager.GetInstance().LoadResource<GameObject>(abName, resName));
+        gameObject.name = resName;
+        return gameObject;
+        
     }
 
     public void AddGameObject(string name, GameObject gameObject)

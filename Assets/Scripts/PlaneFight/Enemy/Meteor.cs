@@ -76,19 +76,29 @@ namespace PlaneFight
                 currentHealth -= 1;
                 if (currentHealth <= 0)
                 {
-                    explosionEffect = PoolManager.GetInstance().GetGameObject("planefight", "ExplosionEffect");
-                    explosionEffect.transform.position = transform.position;
-                    explosionEffect.GetComponent<ParticleSystem>().Play();
-                    CancelInvoke(nameof(DestroySelf));
-                    if (size * 0.5f > minSize)
-                    {
-                        CreateSplitMeteor();
-                        CreateSplitMeteor();
-                    }
-                    DestroySelf();
+                    Hurt();
                 }
             }
+            else if (other.gameObject.CompareTag("Enemy"))
+            {
+                Hurt();
+            }
         }
+
+        private void Hurt()
+        {
+            explosionEffect = PoolManager.GetInstance().GetGameObject("planefight", "ExplosionEffect");
+            explosionEffect.transform.position = transform.position;
+            explosionEffect.GetComponent<ParticleSystem>().Play();
+            CancelInvoke(nameof(DestroySelf));
+            if (size * 0.5f > minSize)
+            {
+                CreateSplitMeteor();
+                CreateSplitMeteor();
+            }
+            DestroySelf();
+        }
+
     }
 }
 

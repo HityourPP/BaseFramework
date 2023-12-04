@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5836969966800658801}
   m_Layer: 9
   m_Name: Meteor_Big3
-  m_TagString: Untagged
+  m_TagString: Meteor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

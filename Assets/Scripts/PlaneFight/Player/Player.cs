@@ -37,7 +37,7 @@ namespace PlaneFight
     
         private void MoveController()
         {
-            Vector2 moveDir = InputManager.Instance.GetMoveDirection();
+            Vector2 moveDir = InputManager.GetInstance().GetMoveDirection();
             rb.velocity = new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed);
         }
     
@@ -61,6 +61,17 @@ namespace PlaneFight
                     // Instantiate(playerBullet, shootPos.position, transform.rotation);
                     shootStartTime = Time.time;
                 }
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Meteor"))
+            {
+                GameObject explosionEffect = PoolManager.GetInstance().GetGameObject("planefight", "ExplosionEffect");
+                explosionEffect.transform.position = transform.position;
+                explosionEffect.GetComponent<ParticleSystem>().Play();
+                PoolManager.GetInstance().AddGameObject(gameObject.name, gameObject);
             }
         }
     }
