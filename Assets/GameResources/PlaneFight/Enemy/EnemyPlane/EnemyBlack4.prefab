@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 30
-  maxHealth: 6
+  maxHealth: 4
 --- !u!50 &876242595657333694
 Rigidbody2D:
   serializedVersion: 4

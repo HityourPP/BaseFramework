@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PlaneFight
 {
@@ -9,10 +11,12 @@ namespace PlaneFight
     {
         private Rigidbody2D rb;
         private Camera mainCamera;
-        [SerializeField] private float moveSpeed;
-        [SerializeField] private float shootCoolTime;
+        public float moveSpeed;
+        public float shootCoolTime;
+        public int bulletNum;
         [SerializeField] private float rotateSpeed;
         [SerializeField] private Transform shootPos;
+        [SerializeField] private TextMeshProUGUI buffText;
         private GameObject playerBullet;
         private float shootStartTime;
     
@@ -23,7 +27,23 @@ namespace PlaneFight
             mainCamera = Camera.main;
             playerBullet = AssetBundlesManager.GetInstance().LoadResource<GameObject>("planefight", "Bullet");
         }
-    
+
+        private void Start()
+        {
+            HideBuffText();
+            EventManager.GetInstance().AddEventListener<string>("BuffName",buffName =>
+            {
+                buffText.text = buffName;
+                buffText.gameObject.SetActive(true);
+                Invoke(nameof(HideBuffText), 0.25f);
+            });
+        }
+
+        private void HideBuffText()
+        {
+            buffText.gameObject.SetActive(false);
+        }
+
         private void Update()
         {
             Aim();
@@ -54,12 +74,15 @@ namespace PlaneFight
             {
                 if (Input.GetMouseButton(0))
                 {
-                    GameObject bullet = PoolManager.GetInstance().GetGameObject("planefight", "Bullet");
-                    bullet.transform.Rotate(0, 0, 0);
-                    bullet.transform.rotation = transform.rotation;
-                    bullet.transform.position = shootPos.position;
-                    // Instantiate(playerBullet, shootPos.position, transform.rotation);
-                    shootStartTime = Time.time;
+                    for (int i = 0; i < bulletNum; i++)
+                    {
+                        GameObject bullet = PoolManager.GetInstance().GetGameObject("planefight", "Bullet");
+                        bullet.transform.Rotate(0, 0, 0);
+                        bullet.transform.rotation = transform.rotation;
+                        bullet.transform.position = shootPos.position;
+                        // Instantiate(playerBullet, shootPos.position, transform.rotation);
+                        shootStartTime = Time.time;
+                    }    
                 }
             }
         }
@@ -71,6 +94,7 @@ namespace PlaneFight
                 GameObject explosionEffect = PoolManager.GetInstance().GetGameObject("planefight", "ExplosionEffect");
                 explosionEffect.transform.position = transform.position;
                 explosionEffect.GetComponent<ParticleSystem>().Play();
+                EventManager.GetInstance().EventTrigger("PlayerDead");
                 PoolManager.GetInstance().AddGameObject(gameObject.name, gameObject);
             }
         }

@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 297679089
+CRC: 682015498
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 3fda6ff2bd6481c1e9fa13a5a0534a08
+    Hash: 0857e31e8c7ca979e1b15caa9a5ca6da
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 10c0b9ade6e24b0d7b5cc420be86be52
+    Hash: 0875fd02c539084f960ba1962c97f981
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -26,14 +26,30 @@ ClassTypes:
 - Class: 70
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: 11500000, guid: 65f57a486b3ca29438073449a5425857, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: d88c687b9d8baa643b89285c5fc30acd, type: 3}
 - Class: 114
+  Script: {fileID: 11500000, guid: 5e163aaf79ec67448a584fa7300f37b2, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 1690f2ca34df47e40964063faf89f19d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 91cb4cf9f6c21ef49bf583120f783dc4, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 56af1d2c89009fb419ce21d28ce20a39, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 931f7adc38c081e46b852e2811df27bf, type: 3}
 - Class: 115
+  Script: {instanceID: 0}
+- Class: 128
   Script: {instanceID: 0}
 - Class: 198
   Script: {instanceID: 0}
@@ -43,16 +59,57 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 213
   Script: {instanceID: 0}
-SerializeReferenceClassIdentifiers: []
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 223
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FaceInfo_Legacy
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.FontAssetCreationSettings
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.KerningTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_Character
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontFeatureTable
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_FontWeightPair
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphPairAdjustmentRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.TMP_GlyphValueRecord
+- AssemblyName: Unity.TextMeshPro
+  ClassName: TMPro.VertexGradient
+- AssemblyName: UnityEngine.CoreModule
+  ClassName: UnityEngine.Events.PersistentCallGroup
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.FaceInfo
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.Glyph
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphMetrics
+- AssemblyName: UnityEngine.TextCoreFontEngineModule
+  ClassName: UnityEngine.TextCore.GlyphRect
+- AssemblyName: UnityEngine.UI
+  ClassName: UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
 Assets:
 - Assets/GameResources/PlaneFight/Entity/Bullet.prefab
 - Assets/GameResources/PlaneFight/Enemy/Meteor/Meteor_Big1.prefab
+- Assets/GameResources/PlaneFight/Entity/EnemyPlaneSpawner.prefab
 - Assets/GameResources/PlaneFight/Enemy/Meteor/Meteor_Big4.prefab
 - Assets/GameResources/PlaneFight/Enemy/Meteor/Meteor_Big2.prefab
+- Assets/GameResources/PlaneFight/Entity/MeteorSpawner.prefab
 - Assets/GameResources/PlaneFight/Effect/ExplosionEffect.prefab
 - Assets/Resources/Material/Background.mat
 - Assets/GameResources/PlaneFight/Enemy/EnemyPlane/EnemyBlack4.prefab
 - Assets/GameResources/PlaneFight/Enemy/EnemyPlane/EnemyBlack3.prefab
+- Assets/GameResources/PlaneFight/Player/Player.prefab
 - Assets/GameResources/PlaneFight/Enemy/EnemyPlane/EnemyBlack1.prefab
 - Assets/GameResources/PlaneFight/Enemy/Meteor/Meteor_Big3.prefab
 - Assets/GameResources/PlaneFight/Enemy/EnemyPlane/EnemyBlack2.prefab

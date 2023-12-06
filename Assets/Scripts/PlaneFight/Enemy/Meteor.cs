@@ -76,6 +76,7 @@ namespace PlaneFight
                 currentHealth -= 1;
                 if (currentHealth <= 0)
                 {
+                    GameManager.Instance.score += size * 3;
                     Hurt();
                 }
             }
