@@ -23,7 +23,7 @@ namespace PlaneFight
         private void SpawnMeteor()
         {
             float gameTime = Time.time;
-            spawnNum = Mathf.Max(1, (int)gameTime / 100);
+            spawnNum = Mathf.Max(1, 1 + (int)gameTime / 50);
             for (int i = 0; i < spawnNum; i++)
             {
                 float spawnX, spawnY;

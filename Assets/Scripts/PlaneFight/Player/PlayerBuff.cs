@@ -10,7 +10,23 @@ namespace PlaneFight
     {
         private Player _player;
         private string buffName;
+        private Rigidbody2D rb;
 
+        private void Awake()
+        {
+            rb = gameObject.GetComponent<Rigidbody2D>();
+        }
+
+        private void OnEnable()
+        {
+            rb.velocity = -transform.up * 3;
+            Invoke(nameof(DestroySelf), 30f);
+        }
+
+        private void DestroySelf()
+        {
+            PoolManager.GetInstance().AddGameObject(gameObject.name, gameObject);
+        }
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag("Player"))
@@ -22,25 +38,21 @@ namespace PlaneFight
                     case <= 2: 
                         AddSpeed();
                         buffName = "Add Speed";
-                        Debug.Log("1");
                         break;
                     case <= 4:
                         AddBulletNum();
                         buffName = "Add Bullet Num";
-                        Debug.Log("2");
                         break;
                     case <= 6:
                         AddFireRate();
                         buffName = "Add Fire Rate";
-                        Debug.Log("3");
                         break;
                     case < 8:
                         AddHealth();
                         buffName = "Add Health";
-                        Debug.Log("4");
                         break;
                 }
-
+                CancelInvoke(nameof(DestroySelf));
                 PoolManager.GetInstance().AddGameObject(gameObject.name, gameObject);
                 Debug.Log(randomNum + buffName);
                 EventManager.GetInstance().EventTrigger("BuffName", buffName);

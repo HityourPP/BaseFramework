@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace PlaneFight
 {
@@ -16,7 +17,9 @@ namespace PlaneFight
         public GameObject player;
         private GameObject meteorSpawner;
         private GameObject enemyPlaneSpawner;
-        
+
+        private float awardTime;
+        private float awardScore;
         private void Awake()
         {
             if (Instance != null)
@@ -27,8 +30,10 @@ namespace PlaneFight
             Instance = this;
             score = 0;
             health = 3;
+            awardTime = 100f;
+            awardScore = 50f;
         }
-
+        
         private void Start()
         {
             player = PoolManager.GetInstance().GetGameObject(AbName, "Player");
@@ -39,10 +44,11 @@ namespace PlaneFight
             enemyPlaneSpawner.transform.position = new Vector3(0f, 15f, 0f);
             EventManager.GetInstance().AddEventListener("PlayerDead", () =>
             {
-                health--;
-                if (health < 0)
+                ChangeHealth(-1);
+                if (health <= 0)
                 {
                     Debug.Log("GameOver");
+                    EventManager.GetInstance().EventTrigger("GameOver");
                 }
                 else
                 {
@@ -53,7 +59,7 @@ namespace PlaneFight
 
         private void Update()
         {
-            
+            Award();
         }
 
         private void RespawnPlayer()
@@ -66,6 +72,39 @@ namespace PlaneFight
         private void TurnOnCollision()
         {
             player.gameObject.layer = LayerMask.NameToLayer("Player");
+        }
+
+        private void Award()
+        {
+            if (Time.time / awardTime > 1f)
+            {
+                awardTime = Mathf.Min(awardTime + 150f, 500f);
+                ChangeHealth(1);
+            }
+
+            if (score > awardScore)
+            {
+                SpawnBuff();
+                awardScore = score + awardScore;
+            }
+        }
+
+        private void SpawnBuff()
+        {
+            GameObject buff = PoolManager.GetInstance().GetGameObject("planefight", "Buff");
+            buff.transform.position = new Vector3(Random.Range(-5f, 5f), 10f, 0f);
+        }
+
+        public void GetScore(float score)
+        {
+            this.score += score;
+            EventManager.GetInstance().EventTrigger("GetScore", this.score);
+        }
+
+        public void ChangeHealth(int change)
+        {
+            health += change;
+            EventManager.GetInstance().EventTrigger("ChangeHealth", health);
         }
     }
 }

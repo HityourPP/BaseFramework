@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 682015498
+CRC: 4246478572
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 0857e31e8c7ca979e1b15caa9a5ca6da
+    Hash: 562b9ad911d0ef5df0d6f3965f75c030
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 0875fd02c539084f960ba1962c97f981
+    Hash: b81bf839d3a43cf2db69798d2f8ca497
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -21,6 +21,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 50
   Script: {instanceID: 0}
+- Class: 58
+  Script: {instanceID: 0}
 - Class: 60
   Script: {instanceID: 0}
 - Class: 70
@@ -33,6 +35,8 @@ ClassTypes:
   Script: {fileID: 11500000, guid: 5e163aaf79ec67448a584fa7300f37b2, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: 1690f2ca34df47e40964063faf89f19d, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: f42b85a34781b774bb59ee29ebf95a45, type: 3}
 - Class: 114
   Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
 - Class: 114
@@ -106,6 +110,7 @@ Assets:
 - Assets/GameResources/PlaneFight/Enemy/Meteor/Meteor_Big2.prefab
 - Assets/GameResources/PlaneFight/Entity/MeteorSpawner.prefab
 - Assets/GameResources/PlaneFight/Effect/ExplosionEffect.prefab
+- Assets/GameResources/PlaneFight/Entity/Buff.prefab
 - Assets/Resources/Material/Background.mat
 - Assets/GameResources/PlaneFight/Enemy/EnemyPlane/EnemyBlack4.prefab
 - Assets/GameResources/PlaneFight/Enemy/EnemyPlane/EnemyBlack3.prefab

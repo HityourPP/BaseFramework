@@ -79,6 +79,19 @@ namespace PlaneFight
                         GameObject bullet = PoolManager.GetInstance().GetGameObject("planefight", "Bullet");
                         bullet.transform.Rotate(0, 0, 0);
                         bullet.transform.rotation = transform.rotation;
+                        if (i > 0)
+                        {
+                            int dir = 0;
+                            if (i % 2 == 0)
+                            {
+                                dir = -i / 2;
+                            }
+                            else
+                            {
+                                dir = (i + 1) / 2;
+                            }
+                            bullet.transform.Rotate(0, 0, 10 * dir);
+                        }
                         bullet.transform.position = shootPos.position;
                         // Instantiate(playerBullet, shootPos.position, transform.rotation);
                         shootStartTime = Time.time;

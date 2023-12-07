@@ -24,6 +24,8 @@ public class SettingPanel : BasePanel
         uiManager.GetOrAddComponentInChildren<Button>("MainMenuButton").onClick.AddListener((() =>
         {
             Debug.Log("MainMenu");
+            PoolManager.GetInstance().Clear();
+            EventManager.GetInstance().ClearEvent();
             GameManager.GetInstance().SceneSystem.SetSceneState(new MainMenuScene());
         }));
         Time.timeScale = 0f;

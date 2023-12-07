@@ -40,7 +40,7 @@ namespace PlaneFight
                     explosionEffect.transform.position = transform.position;
                     explosionEffect.GetComponent<ParticleSystem>().Play();
                     CancelInvoke(nameof(DestroySelf));
-                    GameManager.Instance.score += maxHealth * 5;
+                    GameManager.Instance.GetScore(maxHealth * 5);
                     DestroySelf();  
                 }
             }
