@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3961210167
+CRC: 1505366558
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 027cefb8eac6f66ae7d0f2a5e24bd288
+    Hash: 9b3edacf9f1f0cb584450d71b363528d
   TypeTreeHash:
     serializedVersion: 2
     Hash: d5eaffc34094109b07f63d493bf162b8
@@ -83,4 +83,5 @@ Assets:
 - Assets/GameResources/UI/IslandGUI/MainPanel.prefab
 - Assets/GameResources/UI/IslandGUI/GamePanel.prefab
 - Assets/GameResources/UI/LoadingPanel.prefab
+- Assets/GameResources/UI/IslandGUI/GameOverPanel.prefab
 Dependencies: []

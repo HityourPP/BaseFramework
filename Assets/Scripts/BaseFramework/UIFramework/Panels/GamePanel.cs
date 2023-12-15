@@ -28,7 +28,7 @@ public class GamePanel : BasePanel
         });
         EventManager.GetInstance().AddEventListener("GameOver",() =>
         {
-            panelManager.PushUI(new SettingPanel());
+            panelManager.PushUI(new GameOverPanel());
         });
     }
 }

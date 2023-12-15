@@ -76,7 +76,7 @@ namespace PlaneFight
 
         private void AddHealth()
         {
-            GameManager.Instance.health++;
+            GameManager.Instance.ChangeHealth(1);
         }
     }
 }
